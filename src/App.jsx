@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import "./App.css";
 import FormInput from "./components/FormInput";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   // const [username, setUsername] = useState("");
@@ -74,12 +76,41 @@ function App() {
  const onChange=(e)=>{
   setValues({...values,[e.target.name]: e.target.value})
  }
-
+ const successToast=()=>{
+  // alert("login success")
+  toast.success("Login Success! ",{
+    position: "top-center",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "colored",
+  })
+ }
+ const errorToast=()=>{
+  toast.error('Unsuccessfull!', {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
+ }
 // console.log(values)
   return (
     <div className="app">
+    {!inputs ?(
+
+      <div>     
       <form onSubmit={handleSubmit}>
-      <h1>Register</h1>
+     
+ 
+<h1>Register</h1>
         {/* <FormInput placeholder="Username" setUsername={setUsername} /> */}
         {/* <FormInput  refer={usernameRef} placeholder="Username"  />  */}
         {/* <FormInput name="username" placeholder="Username"  /> 
@@ -92,8 +123,38 @@ function App() {
        value={values[input.name]} 
        onChange={onChange}/>
      ))}
-        <button >Submit</button>
+        <button onClick={successToast}>Submit</button>
+        
       </form>
+      </div>
+      
+     ):(
+      <div>     
+      <form onSubmit={handleSubmit}>
+     
+ 
+<h1>Register</h1>
+        {/* <FormInput placeholder="Username" setUsername={setUsername} /> */}
+        {/* <FormInput  refer={usernameRef} placeholder="Username"  />  */}
+        {/* <FormInput name="username" placeholder="Username"  /> 
+        <FormInput name="email" placeholder="Email" />
+        <FormInput name="fullname"  placeholder="Full Name" />
+        <FormInput  name="password" placeholder="Password" /> */}
+     {inputs.map((input)=>(
+      <FormInput key={input.id} 
+      {...input}
+       value={values[input.name]} 
+       onChange={onChange}/>
+     ))}
+        <button onClick={errorToast}>Submit</button>
+        
+      </form>
+
+      </div>
+      
+      ) }
+      
+      <ToastContainer />
     </div>
   );
 }
