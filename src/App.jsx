@@ -104,55 +104,51 @@ theme: "colored",
 // console.log(values)
   return (
     <div className="app">
-    {!inputs ?(
-
-      <div>     
-      <form onSubmit={handleSubmit}>
+    { !inputs ? (
+  <div>
+<form onSubmit={handleSubmit}>
      
  
-<h1>Register</h1>
-        {/* <FormInput placeholder="Username" setUsername={setUsername} /> */}
-        {/* <FormInput  refer={usernameRef} placeholder="Username"  />  */}
-        {/* <FormInput name="username" placeholder="Username"  /> 
-        <FormInput name="email" placeholder="Email" />
-        <FormInput name="fullname"  placeholder="Full Name" />
-        <FormInput  name="password" placeholder="Password" /> */}
-     {inputs.map((input)=>(
-      <FormInput key={input.id} 
-      {...input}
-       value={values[input.name]} 
-       onChange={onChange}/>
-     ))}
-        <button onClick={successToast}>Submit</button>
-        
-      </form>
-      </div>
-      
-     ):(
-      <div>     
-      <form onSubmit={handleSubmit}>
-     
- 
-<h1>Register</h1>
-        {/* <FormInput placeholder="Username" setUsername={setUsername} /> */}
-        {/* <FormInput  refer={usernameRef} placeholder="Username"  />  */}
-        {/* <FormInput name="username" placeholder="Username"  /> 
-        <FormInput name="email" placeholder="Email" />
-        <FormInput name="fullname"  placeholder="Full Name" />
-        <FormInput  name="password" placeholder="Password" /> */}
-     {inputs.map((input)=>(
-      <FormInput key={input.id} 
-      {...input}
-       value={values[input.name]} 
-       onChange={onChange}/>
-     ))}
-        <button onClick={errorToast}>Submit</button>
-        
-      </form>
-
-      </div>
-      
-      ) }
+     <h1>Register</h1>
+             {/* <FormInput placeholder="Username" setUsername={setUsername} /> */}
+             {/* <FormInput  refer={usernameRef} placeholder="Username"  />  */}
+             {/* <FormInput name="username" placeholder="Username"  /> 
+             <FormInput name="email" placeholder="Email" />
+             <FormInput name="fullname"  placeholder="Full Name" />
+             <FormInput  name="password" placeholder="Password" /> */}
+          {inputs.map((input)=>(
+           <FormInput key={input.id} 
+           {...input}
+            value={values[input.name]} 
+            onChange={onChange}/>
+          ))
+          }
+             <button onClick={successToast}>Submit</button>
+             
+           </form>
+           </div> ):(
+            <div>
+            <form onSubmit={handleSubmit}>
+                 
+             
+                 <h1>Register</h1>
+                         {/* <FormInput placeholder="Username" setUsername={setUsername} /> */}
+                         {/* <FormInput  refer={usernameRef} placeholder="Username"  />  */}
+                         {/* <FormInput name="username" placeholder="Username"  /> 
+                         <FormInput name="email" placeholder="Email" />
+                         <FormInput name="fullname"  placeholder="Full Name" />
+                         <FormInput  name="password" placeholder="Password" /> */}
+                      {inputs.map((input)=>(
+                       <FormInput key={input.id} 
+                       {...input}
+                        value={values[input.name]} 
+                        onChange={onChange}/>
+                      ))}
+                         <button onClick={errorToast}>Submit</button>
+                         
+                       </form>
+                       </div> 
+           ) }
       
       <ToastContainer />
     </div>
@@ -160,3 +156,4 @@ theme: "colored",
 }
 
 export default App;
+
